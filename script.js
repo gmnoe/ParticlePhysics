@@ -25,7 +25,6 @@ window.addEventListener('load', function() {
     gradient.addColorStop(0.3, 'red');
     gradient.addColorStop(0.5, 'blue');
     gradient.addColorStop(0.7, 'yellow');
-    
     ctx.fillStyle= gradient;
     ctx.strokeStyle = 'cyan';
     ctx.font = '80px Helvetica';
@@ -61,5 +60,5 @@ window.addEventListener('load', function() {
     textInput.addEventListener('keyup', function(e) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         wrapText(e.target.value);
-    })
+    });
 });
