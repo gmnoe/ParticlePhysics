@@ -1,4 +1,5 @@
 window.addEventListener('load', function() {
+    const textInput = document.getElementById('textInput');
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -20,7 +21,12 @@ window.addEventListener('load', function() {
     ctx.lineTo(canvas.width, canvas.height/2);
     ctx.stroke();
     
-    ctx.fillStyle='blue';
+    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    gradient.addColorStop(0.3, 'red');
+    gradient.addColorStop(0.5, 'blue');
+    gradient.addColorStop(0.7, 'yellow');
+    
+    ctx.fillStyle= gradient;
     ctx.strokeStyle = 'cyan';
     ctx.font = '80px Helvetica';
     ctx.textAlign='center';
@@ -51,5 +57,9 @@ window.addEventListener('load', function() {
         });
         console.log(linesArray)
     }
-    wrapText('Hello, how are you? Testing testing testing');
+
+    textInput.addEventListener('keyup', function(e) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        wrapText(e.target.value);
+    })
 });
